@@ -2,8 +2,11 @@
 
 Aplikasi katalog produk buah dan sayuran dengan antarmuka modern dan responsif.
 
-## 🌐 Website
-[🔗 Kunjungi FreshCatalog](https://angga029995.github.io/Fruit-and-Vegie/fresh_catalog_v3.html)
+## 🌐 Website Publik
+
+[🔗 Buka FreshCatalog](https://angga029995.github.io/Fruit-and-Vegie/)
+
+Halaman publik akan melewati layar intro yang sebelumnya dapat menghalangi interaksi. Katalog tetap menyediakan pencarian, pengurutan, tambah/kelola produk, dan ekspor CSV. Produk custom tersimpan di browser pengunjung masing-masing (local storage), bukan dibagikan otomatis ke semua pengunjung.
 
 ## ✨ Fitur Utama
 
@@ -13,15 +16,17 @@ Aplikasi katalog produk buah dan sayuran dengan antarmuka modern dan responsif.
 - **Tambah Produk Custom**: Tambahkan produk baru ke katalog
 - **Export CSV**: Unduh data dalam format CSV
 - **Responsive Design**: Optimal di semua perangkat (mobile, tablet, desktop)
-- **Dark Mode Ready**: Antarmuka yang modern dan user-friendly
+- **Dark Mode Ready**: Antarmuka modern dan user-friendly
 
 ## 📱 Cara Penggunaan
 
-1. **Buka Website**: Klik link di atas untuk mengakses katalog
-2. **Cari Produk**: Gunakan fitur pencarian di bagian atas
-3. **Filter & Sort**: Gunakan tombol pengurutan untuk menyesuaikan tampilan
-4. **Tambah Produk**: Klik tombol `+` untuk menambahkan produk baru
-5. **Export Data**: Gunakan tombol Export untuk mengunduh data
+1. Buka link website publik di atas.
+2. Cari produk berdasarkan nama, SKU, atau barcode.
+3. Gunakan tombol pengurutan untuk menyesuaikan tampilan.
+4. Klik tombol `+` untuk menambahkan produk baru.
+5. Gunakan tombol Export untuk mengunduh data.
+
+> Produk tambahan disimpan secara lokal pada browser/perangkat yang membuatnya dan tidak otomatis muncul pada perangkat orang lain.
 
 ## 📊 Struktur Data
 
