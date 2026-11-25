@@ -26,34 +26,17 @@
     Katalog belum selesai dimuat. Muat ulang halaman atau <a href="./index%20(3).html">buka katalog langsung</a>.
   </div>
   <script>
-    // Halaman katalog dan pembungkus berada pada origin GitHub Pages yang sama.
-    // Nonaktifkan intro dekoratif agar pengunjung langsung dapat memakai katalog.
     const frame = document.getElementById('catalog');
     const notice = document.getElementById('notice');
     let loadTimer;
 
     function enableCatalog() {
-      try {
-        const doc = frame.contentDocument;
-        if (!doc || !doc.body) throw new Error('Catalog document is not available');
-
-        const intro = doc.getElementById('sysIntro');
-        if (intro) {
-          intro.style.display = 'none';
-          intro.setAttribute('aria-hidden', 'true');
-        }
-        doc.body.classList.remove('si-lock');
-        notice.hidden = true;
-        window.clearTimeout(loadTimer);
-      } catch (_) {
-        notice.hidden = false;
-      }
+      // Biarkan halaman katalog mengatur intro sistem sesuai desain aslinya.
+      notice.hidden = true;
+      window.clearTimeout(loadTimer);
     }
 
-    frame.addEventListener('load', () => {
-      // Beri waktu singkat untuk inisialisasi script katalog.
-      window.setTimeout(enableCatalog, 100);
-    });
+    frame.addEventListener('load', enableCatalog);
     loadTimer = window.setTimeout(() => { notice.hidden = false; }, 10000);
   </script>
 </body>
