@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <title>FreshCatalog Pro — Katalog Publik</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; }
+    body { font: 16px system-ui, sans-serif; background: #f1f3f5; }
+    #catalog { display: block; width: 100%; height: 100%; border: 0; }
+    #notice { position: fixed; z-index: 2; left: 50%; bottom: 1rem; transform: translateX(-50%); padding: .7rem 1rem; border-radius: 999px; background: #212529; color: white; box-shadow: 0 2px 12px #0003; }
+    #notice[hidden] { display: none; }
+  </style>
+</head>
+<body>
+  <iframe id="catalog" title="FreshCatalog Pro" src="./fresh_catalog_v4.html" allow="clipboard-read; clipboard-write"></iframe>
+  <div id="notice" role="status" hidden>Ketuk tombol masuk di katalog jika layar pembuka belum tertutup.</div>
+  <script>
+    // Halaman katalog dan pembungkus ini berada di origin GitHub Pages yang sama.
+    // Lewati layar pembuka dekoratif secara otomatis agar pengunjung langsung dapat memakai katalog.
+    const frame = document.getElementById('catalog');
+    const notice = document.getElementById('notice');
+    let started = false;
+    let finished = false;
+    let attempts = 0;
+
+    function advanceIntro() {
+      if (finished || attempts++ > 180) {
+        notice.hidden = false;
+        return;
+      }
+
+      try {
+        const doc = frame.contentDocument;
+        if (!doc) return;
+        const intro = doc.getElementById('sysIntro');
+        if (!intro || intro.classList.contains('out')) {
+          finished = true;
+          notice.hidden = true;
+          return;
+        }
+
+        const gate = doc.getElementById('siHud');
+        const enter = doc.getElementById('siGo');
+        if (!started && gate) {
+          started = true;
+          gate.click();
+        }
+        if (enter && enter.classList.contains('on')) {
+          enter.click();
+          finished = true;
+          notice.hidden = true;
+          return;
+        }
+      } catch (_) {
+        notice.hidden = false;
+        return;
+      }
+      window.setTimeout(advanceIntro, 250);
+    }
+
+    frame.addEventListener('load', () => window.setTimeout(advanceIntro, 250));
+  </script>
+</body>
+</html>
